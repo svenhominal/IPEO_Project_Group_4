@@ -10,6 +10,8 @@ label_folder = "YOLO/labels/train"
 
 def plot_images_with_comparison(sample_info, label_folder):
 
+    ## Copy of code from usefull_tips.ipynb but with comparison of original and YOLO bounding boxes
+
     src_SI = 'swissImage_50cm_patches/' + sample_info['file_name']
     src_SS = 'swissSURFACE3D_patches/' + sample_info['file_name']
     src_HS = 'swissSURFACE3D_hillshade_patches/' + sample_info['file_name']
