@@ -11,4 +11,4 @@ Large Rock Detection
    
    **inside** the `IPEO_PROJECT_GROUP_4` directory.
    
-2. Verify the structure to avoid any path-related issues during execution.
+2. I used this folder structure to read the images, just so that we dont have any confusion
