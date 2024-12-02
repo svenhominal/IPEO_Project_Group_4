@@ -1,7 +1,7 @@
 # IPEO_Project_Group_4
 Large Rock Detection
 
-
+### Run Testing.ipynb before running the Augmentation.ipynb, as the Augmentation.ipynb uses the Yolo Format created in Testing.ipynb
 
 ### Instructions:
 1. Keep the folders:
