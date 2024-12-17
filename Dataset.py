@@ -2,10 +2,11 @@ import os
 import shutil
 from typing import List, Tuple
 import json
+import rasterio
 
 
 class LargeRocksDataset:
-    def __init__(self, image_folder: str, json_dataset: str, output_path: str):
+    def __init__(self, image_folder: str, json_dataset: str, output_path: str, split = [80,10,10], combined_rgb_hillshade: bool = False):
         """
         Initialize the dataloader 
         
@@ -22,6 +23,8 @@ class LargeRocksDataset:
         self.splits = ["train", "val", "test"]
         self.image_dir = os.path.join(output_path, "images")
         self.label_dir = os.path.join(output_path, "labels")
+        self.combined_rgb_hillshade = combined_rgb_hillshade
+        self.train_percent, self.val_percent, self.test_percent = split
         
         # Create directories for each split
         for split in self.splits:
@@ -67,13 +70,31 @@ class LargeRocksDataset:
             annotations = tile.get('rocks_annotations', [])
             split = tile.get('split', "train")  # Default to 'train' if no split is specified
             
-            # Randomly assign half of the 'test' images to 'val'
-            if split == 'test' and hash(file_name) % 2 == 0:
-                split = 'val'
+            # Adjust the split based on the provided percentages
+            if split == 'test':
+                test_index = hash(file_name) % 100
+                if test_index < ((self.val_percent*9.8)/3.40):
+                    split = 'val'
+                elif test_index < ((self.val_percent*9.8)/3.40 + (self.test_percent*9.8)/3.40):
+                    split = 'test'
+                else:
+                    split = 'train'
             
-            # Copy the image to the appropriate YOLO image folder
             dst_img_path = os.path.join(self.image_dir, split, file_name)
-            shutil.copy(img_path, dst_img_path)
+
+            if self.combined_rgb_hillshade:
+                with rasterio.open(img_path) as src:
+                    profile = src.profile
+                    profile.update(count=3)  # Update profile to have 3 bands
+                    bands = [src.read(1), src.read(4), src.read(3)]  # Replace 2nd band with 4th band (hillshade)
+                
+                # Save the modified image to the appropriate YOLO image folder
+                with rasterio.open(dst_img_path, 'w', **profile) as dst:
+                    for i, band in enumerate(bands, start=1):
+                        dst.write(band, i)
+            else:
+                # Copy the image to the appropriate YOLO image folder
+                shutil.copy(img_path, dst_img_path)
             
             # Prepare labels for this image
             label_lines = []
