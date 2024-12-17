@@ -67,6 +67,10 @@ class LargeRocksDataset:
             annotations = tile.get('rocks_annotations', [])
             split = tile.get('split', "train")  # Default to 'train' if no split is specified
             
+            # Randomly assign half of the 'test' images to 'val'
+            if split == 'test' and hash(file_name) % 2 == 0:
+                split = 'val'
+            
             # Copy the image to the appropriate YOLO image folder
             dst_img_path = os.path.join(self.image_dir, split, file_name)
             shutil.copy(img_path, dst_img_path)
