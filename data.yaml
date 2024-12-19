@@ -1,0 +1,7 @@
+names:
+  0: Rock
+nc: 1
+path: /Users/janclevorn/Desktop/EPFL/IPEO_Project_Group_4/YOLO
+test: /Users/janclevorn/Desktop/EPFL/IPEO_Project_Group_4/YOLO/images/test
+train: /Users/janclevorn/Desktop/EPFL/IPEO_Project_Group_4/YOLO/images/train
+val: /Users/janclevorn/Desktop/EPFL/IPEO_Project_Group_4/YOLO/images/val

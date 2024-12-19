@@ -110,3 +110,109 @@ class LargeRocksDataset:
                 lf.write("\n".join(label_lines))
         
         print(f"Dataset ({self.image_folder}) converted to YOLO format with train/val/test splits at {self.output_path}")
+        print("----" * 10)
+
+    def remove_duplicates_in_labels(self):
+        """
+        Traverse the labels directory and remove duplicate lines in each label file.
+        Print a message only if duplicates were removed.
+        """
+
+        #splits = ['labels/val']  # You can expand this list to other splits if needed.
+        splits = ['labels/val', 'labels/train', 'labels/test']  # You can expand this list to other splits if needed.
+        for split in splits:
+            labels_path = os.path.join(self.output_path, split)
+            print(labels_path)
+            if not os.path.exists(labels_path):
+                print(f"Directory not found: {labels_path}")
+                continue
+            
+            for label_file in os.listdir(labels_path):
+                file_path = os.path.join(labels_path, label_file)
+                
+                if not label_file.endswith('.txt'):
+                    continue  # Skip non-label files
+                
+                try:
+                    # Read file and remove duplicates
+                    with open(file_path, 'r') as f:
+                        lines = f.readlines()
+                    
+                    # Strip whitespace and remove duplicates while maintaining the original order
+                    seen = set()
+                    unique_lines = []
+                    for line in lines:
+                        stripped_line = line.strip()  # Remove leading/trailing spaces and newlines
+                        if stripped_line and stripped_line not in seen:  # Check for duplicate lines
+                            unique_lines.append(line)  # Append the original line (with all whitespaces)
+                            seen.add(stripped_line)
+                    
+                    # Check if duplicates were removed
+                    if len(lines) != len(unique_lines):
+                        # Write back the unique lines
+                        with open(file_path, 'w') as f:
+                            f.writelines(unique_lines)  # Writing back without sorting to preserve original order
+                        
+                        print(f"Duplicates removed in file: {file_path}")
+                except Exception as e:
+                    print(f"Error processing file {file_path}: {e}")
+        
+        print("----" * 10)
+
+    def check_images_and_label_size(self):
+        """
+        Check if the number of images in the image folder matches the number of annotation entries in the JSON file.
+        Also ensures that there is no mismatch between image files and annotations.
+        """
+        # Load the JSON data
+        with open(self.label_file, 'r') as f:
+            data = json.load(f)
+
+        # Extract image filenames from the JSON data
+        image_files_from_json = [item['file_name'] for item in data['dataset']]
+
+        # List all the image files in the specified folder
+        image_files_in_folder = os.listdir(self.image_folder)
+
+        # Filter out non-image files (e.g., directories) if needed
+        image_files_in_folder = [f for f in image_files_in_folder if f.endswith('.tif')]
+
+        # Check if the number of images matches the number of entries in the JSON
+        num_images_in_json = len(image_files_from_json)
+        num_images_in_folder = len(image_files_in_folder)
+
+        # Compare the counts
+        if num_images_in_json == num_images_in_folder:
+            print(f"Success! The number of images ({num_images_in_folder}) matches the number of annotations ({num_images_in_json}).")
+
+        else:
+            print(f"Warning! The number of images ({num_images_in_folder}) does not match the number of annotations ({num_images_in_json}).")
+            
+            # Optionally, check for missing or extra images
+            missing_images = set(image_files_from_json) - set(image_files_in_folder)
+            extra_images = set(image_files_in_folder) - set(image_files_from_json)
+            
+            if missing_images:
+                print("Missing images: ", missing_images)
+            if extra_images:
+                print("Extra images in the folder: ", extra_images)
+        
+        print("----" * 10)
+
+    def print_actual_split(self):
+
+        train_image_dir = os.path.join(self.output_path, "images/train")
+        val_image_dir = os.path.join(self.output_path, "images/test")
+        test_image_dir = os.path.join(self.output_path, "images/val")
+
+
+        train_count = len(os.listdir(train_image_dir))
+        val_count = len(os.listdir(val_image_dir))
+        test_count = len(os.listdir(test_image_dir))
+        total = train_count + val_count + test_count
+
+        print("*** RGB Dataset Split ***")
+        print(f"Train set: {train_count} images - {train_count /total * 100:.2f}%")
+        print(f"Validation set: {val_count} images - {val_count / total * 100:.2f}%")
+        print(f"Test set: {test_count} images - {test_count / total * 100:.2f}%")
+        print("----" * 10)
