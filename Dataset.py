@@ -26,10 +26,6 @@ class LargeRocksDataset:
         self.combined_rgb_hillshade = combined_rgb_hillshade
         self.train_percent, self.val_percent, self.test_percent = split
         
-        # Create directories for each split
-        for split in self.splits:
-            os.makedirs(os.path.join(self.image_dir, split), exist_ok=True)
-            os.makedirs(os.path.join(self.label_dir, split), exist_ok=True)
     
     def _convert_bbox(self, rel_loc: Tuple[float, float], bbox_size: Tuple[int, int], img_size: Tuple[int, int]) -> List[float]:
         """
@@ -52,6 +48,11 @@ class LargeRocksDataset:
         """
         Process the dataset + convert it to YOLOv8 format with train/val/test splits.
         """
+        # Create directories for each split
+        for split in self.splits:
+            os.makedirs(os.path.join(self.image_dir, split), exist_ok=True)
+            os.makedirs(os.path.join(self.label_dir, split), exist_ok=True)
+            
         # Load the annotations JSON
         with open(self.label_file, 'r') as f:
             data = json.load(f)
@@ -211,7 +212,7 @@ class LargeRocksDataset:
         test_count = len(os.listdir(test_image_dir))
         total = train_count + val_count + test_count
 
-        print("*** RGB Dataset Split ***")
+        print(f"*** {self.output_path} Dataset Split ***")
         print(f"Train set: {train_count} images - {train_count /total * 100:.2f}%")
         print(f"Validation set: {val_count} images - {val_count / total * 100:.2f}%")
         print(f"Test set: {test_count} images - {test_count / total * 100:.2f}%")

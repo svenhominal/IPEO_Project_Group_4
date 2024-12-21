@@ -157,7 +157,7 @@ def plot_random_combinations_with_bboxes(rgb_folder, combined_folder, label_fold
     # Select 5 random images
     random_indices = random.sample(range(len(rgb_files)), 5)
 
-    fig, axs = plt.subplots(5, 3, figsize=(20, 25))
+    fig, axs = plt.subplots(5, 3, figsize=(16, 25))
     
     for idx, random_index in enumerate(random_indices):
         rgb_file = rgb_files[random_index]
@@ -179,6 +179,7 @@ def plot_random_combinations_with_bboxes(rgb_folder, combined_folder, label_fold
             for line in lines:
                 _, x_center, y_center, box_width, box_height = map(float, line.strip().split())
                 yolo_bboxes.append((x_center, y_center, box_width, box_height))
+        else: print(f"YOLO annotations not found in {yolo_label_path} for {rgb_file}")
         
         # Plot the original RGB image
         axs[idx, 0].imshow(rgb_image)
