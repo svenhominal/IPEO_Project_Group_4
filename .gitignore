@@ -13321,3 +13321,7 @@ YOLO_RGBHS/labels/val/2781_1141_2_0.txt
 YOLO_RGBHS/labels/val/2781_1141_2_2.txt
 YOLO_RGBHS/labels/val/2781_1141_2_3.txt
 YOLO_RGBHS/labels/val/2781_1141_3_2.txt
+yolov10n.pt
+yolov10x.pt
+scitas/train14/weights/last.pt
+scitas/train14/weights/best.pt
