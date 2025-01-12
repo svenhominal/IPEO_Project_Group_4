@@ -15,7 +15,7 @@ Please adhere to the folder structure given below, this will allow smoothly runn
 
 ```plaintext
 root/
-├── Images                             # Images of Resulte
+├── Images                             # Images of Results
 ├── testing.ipynb                      # Main notebook motivating and describing our process
 ├── enironment.yml                     # Requirement file (conda IPEO create -f environment.yml)
 ├── inference.ipynb                    # Notebook to run Inference
