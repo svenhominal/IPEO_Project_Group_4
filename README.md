@@ -57,6 +57,7 @@ root/
 ├── inference.ipynb                    Notebook to run Inference
 ├── Dataset.py                         Data Processing for the Dataset
 ├── utils.py                           Function used for analysis
+├── YoloTraining.ipnyb                 notebook for example YOLO training
 │
 ├── swissImage_50cm_patches            Data folder to be downloaded from [data]
 ├── swissSURFACE3D_hillshade_patches   Data folder to be downloaded from [data]
