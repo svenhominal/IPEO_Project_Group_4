@@ -1,7 +1,7 @@
 # IPEO Project Group 4 - Large Rocks Detection
 
 **Author 1 (sciper):** Jan Peter Reinhard Clevorn (377937)  
-**Author 2 (sciper):** Samuel Darmon (XXXXXX)   
+**Author 2 (sciper):** Samuel Darmon (325211)   
 **Author 3 (sciper):** Sven Hominal (XXXXX)   
 
 This project focuses on automating the detection of large rocks (≥5x5 meters) in the Swiss Alps using high-resolution aerial imagery and digital surface models (DSM). The primary objective is to develop an efficient object detection pipeline that can assist the Federal Office for Topography (swisstopo) in updating topographic maps with greater accuracy and efficiency.
