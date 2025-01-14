@@ -15,12 +15,12 @@ Please adhere to the folder structure given below, this will allow smoothly runn
 
 ```plaintext
 root/
-├── Images                             # Images of Results
-├── testing.ipynb                      # Main notebook motivating and describing our process
-├── enironment.yml                     # Requirement file (conda IPEO create -f environment.yml)
-├── inference.ipynb                    # Notebook to run Inference
-├── Dataset.py                         # Data Processing for the Dataset
-├── utils.py                           # Function used for analysis
+├── Images                             Images of Results
+├── testing.ipynb                      Main notebook motivating and describing our process
+├── enironment.yml                     Requirement file (conda IPEO create -f environment.yml)
+├── inference.ipynb                    Notebook to run Inference
+├── Dataset.py                         Data Processing for the Dataset
+├── utils.py                           Function used for analysis
 │
 ├── swissImage_50cm_patches            # Data folder to be downloaded from [DATA][data]
 ├── swissSURFACE3D_hillshade_patches   # Data folder to be downloaded from [DATA][data]
