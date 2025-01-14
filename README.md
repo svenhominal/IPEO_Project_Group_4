@@ -8,7 +8,7 @@
 
 ## Important notes
 
-Please adhere to the folder structure given below, this will allow smoothly running this code. Rerunning all parts of this code will take a while, as generating dataset, data augmentation takes time. 
+Please adhere to the folder structure given below, this will allow smoothly running this code. Rerunning all parts of this code will take a while, as generating dataset, data augmentation, etc. takes time. 
 
 
 ## Please adhere to the following file structure
