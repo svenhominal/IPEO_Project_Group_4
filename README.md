@@ -1,7 +1,7 @@
 # IPEO Project Group 4 - Large Rocks Detection
 
 **Author 1 (sciper):** Jan Peter Reinhard Clevorn (377937)  
-**Author 2 (sciper):** Samuel Darmon (XXXXXX)   
+**Author 2 (sciper):** Samuel Darmon (325211)   
 **Author 3 (sciper):** Sven Hominal (XXXXX)   
 
 
@@ -22,10 +22,10 @@ root/
 ├── Dataset.py                         Data Processing for the Dataset
 ├── utils.py                           Function used for analysis
 │
-├── swissImage_50cm_patches            # Data folder to be downloaded from [DATA][data]
-├── swissSURFACE3D_hillshade_patches   # Data folder to be downloaded from [DATA][data]
-├── swissSURFACE3D_patches             # Data folder to be downloaded from [DATA][data]
-└── inference.ipynb                    # Data folder to be downloaded from [DATA][data]
+├── swissImage_50cm_patches            Data folder to be downloaded from [data]
+├── swissSURFACE3D_hillshade_patches   Data folder to be downloaded from [data]
+├── swissSURFACE3D_patches             Data folder to be downloaded from [data]
+└── inference.ipynb                    Data folder to be downloaded from [data]
 
 
 [data]: https://enacshare.epfl.ch/bY2wS5TcA4CefGks7NtXg
