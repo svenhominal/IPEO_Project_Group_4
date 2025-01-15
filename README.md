@@ -65,6 +65,7 @@ root/
 └── large_rock_dataset.json            Data folder to be downloaded from [data]
 
 [data]: https://enacshare.epfl.ch/bY2wS5TcA4CefGks7NtXg
+```
 
 ## Running the Code
 
