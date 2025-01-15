@@ -64,5 +64,9 @@ root/
 ├── swissSURFACE3D_patches/            Data folder to be downloaded from [data]
 └── large_rock_dataset.json            Data folder to be downloaded from [data]
 
-
 [data]: https://enacshare.epfl.ch/bY2wS5TcA4CefGks7NtXg
+
+## Running the Code
+
+To run the code, please create a conda env with: "conda env create -f environment.yml" and activate the environment with: "conda activate IPEO_PROJECT_GROUP_4"
+
