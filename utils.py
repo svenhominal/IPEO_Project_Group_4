@@ -5,6 +5,7 @@ import os
 from tqdm import tqdm
 import random
 import numpy as np
+import cv2
 
 # Paths to the YOLO dataset
 image_folder = "YOLO/images/train"
