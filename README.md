@@ -51,7 +51,7 @@ Please adhere to the folder structure given below, this will allow smoothly runn
 
 ```plaintext
 root/
-├── Images                             Images of Results
+├── Images/                            Images of Results
 ├── testing.ipynb                      Main notebook motivating and describing our process
 ├── enironment.yml                     Requirement file (conda IPEO create -f environment.yml)
 ├── inference.ipynb                    Notebook to run Inference
@@ -59,10 +59,10 @@ root/
 ├── utils.py                           Function used for analysis
 ├── YoloTraining.ipnyb                 notebook for example YOLO training
 │
-├── swissImage_50cm_patches            Data folder to be downloaded from [data]
-├── swissSURFACE3D_hillshade_patches   Data folder to be downloaded from [data]
-├── swissSURFACE3D_patches             Data folder to be downloaded from [data]
-└── inference.ipynb                    Data folder to be downloaded from [data]
+├── swissImage_50cm_patches/           Data folder to be downloaded from [data]
+├── swissSURFACE3D_hillshade_patches/  Data folder to be downloaded from [data]
+├── swissSURFACE3D_patches/            Data folder to be downloaded from [data]
+└── large_rock_dataset.json            Data folder to be downloaded from [data]
 
 
 [data]: https://enacshare.epfl.ch/bY2wS5TcA4CefGks7NtXg
