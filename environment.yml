@@ -1,4 +1,4 @@
-name: IPEO
+name: IPEO_PROJECZ_GROUP_4
 channels:
   - conda-forge
   - defaults
